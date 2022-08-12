@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% include 'cdnline.html' %}
+
+    <title></title>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://icon-library.com/images/todo-icon/todo-icon-5.jpg" alt="" width="50" height="30" class="d-inline-block align-text-top">
+      Todo List
+    </a>
+  </div>
+</nav>
+ 
+  <div class="row">
+<div class="col-md-12">
+<h3 class="text-center text-success">Work ToDo</h3>
+</div>
+  </div>
+
+    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+
+          <h4 class="text-danger">To-Do</h4>
+        <ul>
+          <li>work</li>
+          <li>personal</li>
+          <li>social</li>
+          <li>
+            <a href="#">Create List +</a>
+          </li>
+        </ul>
+          <ul>
+            <a href="#">filters</a>
+            <li>Active Tosk</li>
+            <li>Assigned to me</li>
+            <li>upcoming</li>
+            <li>overdue</li>
+            <li>completed</li>
+          </ul>
+          
+        </div>
+        <div class="col-md-9">
+        <div class="row">
+<div
+ class="col-md-12 my-2">          <a href="{% url 'add_student' %}" class="btn btn-success float-right" data-toggle="tooltip" data-placement="bottom" title="Add Todo">Add Task<i class="fa-solid fa-plus mx-2"></i></a></div>
+        </div>
+          <table class="table table-bordered text-center bg-secondary table-hover">
+            <thead class="bg-success">
+              <tr class="text-light">
+                <th>Task</th>
+                <th>Description</th>
+                <th>Action button</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in student %}
+              <tbody class='text-light'>
+              <tr >
+                <td>{{i.task}}</td>
+                <td>{{i.description}}</td>
+              
+                <td>
+                  <a href="{% url 'update_student' i.id %}" class="btn btn-sm btn-outline-info" data-toggle="tooltip" data-placement="bottom" title="Edit Todo"><i class="fa-solid fa-pen-to-square"></i></a>
+                  <a href="{% url 'delete_student' i.id %}"class="btn btn-sm btn-outline-danger"  data-toggle="tooltip" data-placement="bottom" title="Delete Todo"><i class="fa-solid fa-trash"></i></a>
+                </td>
+              </tr>
+              </tbody>
+              {% endfor %}
+            </tbody>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
